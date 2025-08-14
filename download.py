@@ -5,6 +5,8 @@ import os
 from subprocess import call
 import shutil
 import cv2
+from tqdm import tqdm
+
 
 
 
@@ -48,7 +50,8 @@ class Builder:
         self.open()
         print(f"build database: {self.dbfile}")
         for split in ['train', 'test']:
-            for txtfile in os.listdir(os.path.join(self.root, split)):
+            print(f"build {split} database")
+            for txtfile in tqdm(os.listdir(os.path.join(self.root, split))):
                 with open(os.path.join(self.root, split, txtfile), 'r') as f:
                     url = f.readline().strip()
                     Video.create(split=split, txtfile=txtfile, url=url, state='undownloaded')
