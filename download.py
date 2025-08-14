@@ -105,10 +105,18 @@ class Downloader:
         video.save()
         url = video.url
         video_id = url.split('=')[-1]
+        save_path = os.path.join('downloaded', video.split, video_id)
+        if os.path.exists(save_path):
+            print(f"video already downloaded: {save_path}")
+            video.state = 'downloaded'
+            video.save()
+            self.print_downloading_info()
+            return
+
+
         if not os.path.exists(self.tmppath):
             os.makedirs(self.tmppath)
         tmp_path = os.path.join(self.tmppath, video_id)
-        save_path = os.path.join('downloaded', video.split, video_id)
         if not os.path.exists(os.path.dirname(save_path)):
             os.makedirs(os.path.dirname(save_path))
 
