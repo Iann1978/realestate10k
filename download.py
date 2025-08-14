@@ -148,6 +148,8 @@ class Downloader:
 
             self.download_one(video)
 
+        print(f"\ndownload finished!!!")
+
 
 
     
@@ -163,25 +165,13 @@ def build_downloading_database():
 
 def download():
     print('download videos')
-
-    # builder = DatabaseBuilder()
-    # builder.build()
-    # exit();
-
     downloader = Downloader()
     downloader.clean_tmp()
     downloader.download()
-    downloader.extract_frames()
     downloader.close()
     exit()
 
-    # builder = DatabaseBuilder(rebuild=False)
-    # # builder.build()
-    # builder.clean_tmp()
 
-    # builder.download()
-    # builder.close()
-    # exit()
 
 
 
