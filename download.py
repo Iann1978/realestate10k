@@ -66,7 +66,7 @@ class Builder:
         failed_count = Video.select().where(Video.state == 'failed').count()
         total_count = Video.select().count()
         print(f"downloading info: {undownloaded_count}/{downloaded_count}/{failed_count}/{total_count} (undownloaded/downloaded/failed/total)")
-
+        print(f"downloaded: {downloaded_count}/{total_count} ({downloaded_count/total_count*100:.2f}%)")
 
 class Downloader:
     def __init__(self, dbfile='downloading.sqlite', root='RealEstate10K'):
@@ -141,7 +141,8 @@ class Downloader:
         failed_count = Video.select().where(Video.state == 'failed').count()
         total_count = Video.select().count()
         print(f"downloading info: {undownloaded_count}/{downloaded_count}/{failed_count}/{total_count} (undownloaded/downloaded/failed/total)")
-
+        print(f"downloaded: {downloaded_count}/{total_count} ({downloaded_count/total_count*100:.2f}%)")
+        
     def download(self):
         count = Video.select().where(Video.state == 'undownloaded').count()
         if count == 0:
