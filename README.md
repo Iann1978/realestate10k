@@ -19,6 +19,8 @@ pip install -r requirements.txt
 
 * Download [RealEstate10K.tar.gz](https://storage.cloud.google.com/realestate10k-public-files/RealEstate10K.tar.gz), unzip it and replace the context in folder RealEstate10K.
 
+* Export your youtube's cookie and save it as cookies.txt under the current folder.
+
 * Run the follow
 ```bash
 python download.py
